@@ -44,13 +44,60 @@ public class Project{
         }
 
         System.out.println("-------");
+ }
+ 
+        public static void dealingCards(Cards[] playerhand, Cards[] deck,Cards[]oppenanthand,
+         Cards[]board) {
+        int tur=13;
+        System.out.println("your cards");
+        for (int i = 0; i < playerhand.length; i++) {
+            playerhand[i] = deck[i];
+            System.out.println(playerhand[i].getSuit() + playerhand[i].getRank());
+        }
+        System.out.println("opp cards");
+        for (int i = 0; i < oppenanthand.length; i++) {
+            oppenanthand[i] = deck[4+i];
+            System.out.println(oppenanthand[i].getSuit() + oppenanthand[i].getRank());
+        }
+        System.out.println("board cards");
+        for (int i = 0; i < board.length; i++) {
+            board[i] = deck[8+i];
+            System.out.println( board[i].getSuit() + board[i].getRank());
+        }
+		
+		public static void playingCards(Cards[] playerhand, Cards[]board){
+        Cards[] temp= new Cards[board.length+1];
+        Cards[] tempforboard= new Cards[1];
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Which card you want to play?");
+        int chosen= sc.nextInt();
+       for(int i=0; i< temp.length;i++){
+           if(i==0){
+           temp[i]=playerhand[chosen-1];
+
+           }if (i!=0 && playerhand[chosen-1]!=board[0]){
+               temp[i]=board[i-1];
+           }else{
+               tempforboard[0]=new Cards(" "," ");
+               for (int k=0; k<= temp.length;k++){
+
+                   board[k]= tempforboard[0]; //kaldığım yer
+               }
+           }
+           System.out.println("board cards:");
+           System.out.println( temp[i].getSuit() + temp[i].getRank());
+        }
+
 
     }
+	
 
     public static void main(String[] args){
         System.out.println("Weolcome to Game Pisti :)...");
 		Cards[] deck= new Cards[52];
         createCards(deck);
+		dealingCards(playerhand,deck,opponenthand,board);
+        playingCards(playerhand,board);
 
 
     }
