@@ -8,7 +8,7 @@ public class Hand {
     private int chosen;
     private String name;
     private int mycurrentNum = 0;
-    private Card[] hand = new Card[4];
+    private Card[] hand = new Card[1];
 
 
     private int numCards;
@@ -18,12 +18,16 @@ public class Hand {
     }
 
     public void addCard(Card mycard) {
-        if (mycurrentNum == 4) {
-            System.out.println("4 kart var.");
-        }
         if (mycurrentNum < 4) {
-            hand[mycurrentNum] = mycard;
-            mycurrentNum++;
+			mycurrentNum++;
+            Card[] temp= new Card[mycurrentNum];
+			for(int i=0; i<mycurrentNum; i++){
+				if(i==0){
+					temp[i]=mycard;
+				}else{
+					temp[i]= hand[i-1];
+				}
+			}hand=temp;
         }
     }
 
@@ -82,6 +86,12 @@ public class Hand {
         }
         mycurrentNum--;
         hand = temp2;
+    }
+	 public boolean emptyHand(){
+        if (mycurrentNum==0){
+            return true;
+        }
+        return false;
     }
 
 }
