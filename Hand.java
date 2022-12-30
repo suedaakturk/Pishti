@@ -102,7 +102,7 @@ public class Hand {
         }
         return hand[k];
     }
-        public void removeCardFromPcHand (Card a){
+        public void removeCardFromPcHand(Card a){
             Card temp2[] = new Card[mycurrentNum - 1];
             for (int k = 0; k < hand.length; k++) {
                 if (hand[k] == a) {
@@ -120,13 +120,13 @@ public class Hand {
             mycurrentNum--;
             hand = temp2;
         }
-    public boolean emptyHand () {
+    public boolean emptyHand() {
             if (mycurrentNum == 0) {
                 return true;
             }
             return false;
         }
-        public String returnPlayerName () {
+        public String returnPlayerName() {
             return name;
         }
 

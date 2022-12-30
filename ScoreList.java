@@ -60,7 +60,7 @@ public class ScoreList {
                 try {
                     fw = new FileWriter("ScoreList.txt", true);
                     f = new Formatter(fw);
-                    f.format("%s     %s      %s\n", nums[i], scoreList[i].getPlayername(), scoreList[i].getPlayerscore());
+                    f.format("%s %s %s\n", nums[i], scoreList[i].getPlayername(), scoreList[i].getPlayerscore());
                     fw.close();
                 } catch (Exception ex) {
                     System.err.println("Something gives an error.");

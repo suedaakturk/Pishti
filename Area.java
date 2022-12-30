@@ -4,7 +4,7 @@ public class Area {
     private int tournum = 1;
     private boolean boardlast=false;
     Scanner sc = new Scanner(System.in);
-    String k;
+    private String k=sc.nextLine();
 
 
     Deck deck = new Deck();
@@ -50,8 +50,7 @@ public class Area {
     }
 
     public void gamePlaying() {
-        System.out.println("Enter your name...");
-        k = sc.next();
+        
         for (int i = 0; i < 6; i++) {// oyun 6 tur döneceği için i<6.
             dealer();
             display();
@@ -76,7 +75,7 @@ public class Area {
         gameboard.printResultScore();
        // gameboard.printpishtinumcards();
         String str= Integer.toString(gameboard.returnPlayerScore());
-        ScoreList scr= new ScoreList(k,str);
+        ScoreList scr= new ScoreList(playerhand.returnPlayerName(),str);
         scr.sort();
         scr.clear();
         scr.append();
