@@ -14,10 +14,10 @@ public class ScoreList {
 
         scoreList = new Score[11];
         try {
-            reader = new Scanner(Paths.get("ScoreBoard.txt"));
+            reader = new Scanner(Paths.get("ScoreList.txt"));
             for (int i = 0; i < scoreList.length - 1; i++) {
-                String[] info = reader.nextLine().split("    ");
-                scoreList[i]= new Score(info[1],info[2]);
+                String[] info = reader.nextLine().split(" ");
+                scoreList[i] = new Score(info[1], info[2]);
             }
             scoreList[10] = new Score(playername, playerscore);
         } catch (IOException e) {
@@ -27,7 +27,7 @@ public class ScoreList {
                 reader.close();
             }
         }
-
+    }
         public void sort() {
             int num;
             int num2;
@@ -46,7 +46,7 @@ public class ScoreList {
         }
         public void clear() {
             try {
-                PrintWriter pw = new PrintWriter("ScoreBoard.txt");
+                PrintWriter pw = new PrintWriter("ScoreList.txt");
                 pw.close();
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -58,11 +58,11 @@ public class ScoreList {
             FileWriter fw = null;
             for (int i = 0; i < scoreList.length - 1; i++) {
                 try {
-                    fw = new FileWriter("ScoreBoard.txt", true);
+                    fw = new FileWriter("ScoreList.txt", true);
                     f = new Formatter(fw);
                     f.format("%s     %s      %s\n", nums[i], scoreList[i].getPlayername(), scoreList[i].getPlayerscore());
                     fw.close();
-                } catch (Expection e) {
+                } catch (Exception ex) {
                     System.err.println("Something gives an error.");
                 } finally {
                     if (f != null) {
@@ -77,4 +77,3 @@ public class ScoreList {
             }
         }
     }
-}

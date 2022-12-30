@@ -5,11 +5,13 @@ public class Deck {
     private Card[] myDeck=new Card[numOfCards];
 
     public Deck() {
-        String[] suit = {"S", "D", "C", "H"};
+        String[] suit = {"♠", "♣","♥", "♦" };
         String[] rank = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
         for (int i = 0; i < myDeck.length; i++) {
             myDeck[i] = new Card(suit[i / 13], rank[i % 13]);
         }
+        shuffleDeck();
+        cutDeck();
     }
 
        public void shuffleDeck(){
